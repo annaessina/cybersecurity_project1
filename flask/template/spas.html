@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/spas.css">
+</head>
+<body>
+  <div class="container">
+    <p><form action="/search" method="POST">
+      Hakusana: <input type="text" name="name">
+      <input type="submit" value="Hae">
+    </form></p>
+ 
+    <p>Kylpylöiden määrä: {{ count }}</p>
+    <form action="/review">
+      <input type="submit" value="Arvostelut">
+    </form>
+    <br>
+    {% for spa in spas %}
+    {{ spa.name }}
+    {% if is_admin %}
+    <br><br>
+    <form action="/delete" method="POST">
+      <!-- FLAW 2. How to fix.
+      <input type="hidden" name="csrf_token" value="{{ session['csrf_token'] }}">
+      -->
+      <input type="hidden" name="spa_id" value="{{ spa.id }}">
+      <input type="submit" value="Delete">
+    </form>
+    <br>
+    {% endif %}
+    {% endfor %}
+    <br>
+    <p><a href="/new">Lisää kylpylä</a></p>
+    <p><a href="/logout">Kirjaudu ulos</a></p>
+  </div>
+</body>
+</html>

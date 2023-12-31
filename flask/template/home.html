@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/home.css">
+<title>Main page</title>
+<h1><b>Tervetuloa arvostelemaan kylpylöitä!</b></h1>
+
+<form action="/login" method="POST">
+<p>Tunnus:<br>
+<input type="text" name="username"></p>
+<p>Salasana:<br>
+<input type="password" name="password"></p>
+<input type="submit" value="Kirjaudu">
+</form>
+
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+      {% for message in messages %}  
+        <div id="flash-message" class="alert alert-success">
+            {{ message }}
+        </div>  
+      {% endfor %}  
+      <script> setTimeout(function() {
+        document.getElementById('flash-message').style.display = 'none';
+      }, 3000);</script>
+
+{% endif %}  
+{% endwith %}  
+
+
+<p><b>Tai luo uusi käyttäjä</b></p>
+
+<form action="/create_account" method="POST">
+  <p>Tunnus:<br>
+  <input type="text" name="username"></p>
+ 
+  <p>Salasana:<br>
+  <input type="password" name="password"></p>
+ 
+  <p>Onko uusi käyttäjä ylläpitäjä?</p>
+  <input type="checkbox" name="is_admin">
+ 
+  <br><br>
+ 
+  <input type="submit" value="Luo käyttäjä">
+</form>
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/reviews.css">
+    <script>
+        function toggleComments(spaId) {
+            var commentsSection = document.getElementById(`comments-${spaId}`);
+            var button = document.getElementById(`button-${spaId}`);
+            if (commentsSection.style.display === "none") {
+                commentsSection.style.display = "block";
+                button.innerHTML = "Piilota";
+            } else {
+                commentsSection.style.display = "none";
+                button.innerHTML = "Näytä kommentit";
+            }
+        }
+    </script>
+</head>
+<body>
+    <p><a href="/spas">Takaisin</a></p>
+<form action="/search" method="POST">
+    Hakusana: <input type="text" name="name">
+    <input type="submit" value="Hae">
+</form>
+
+{% for spa in spas %}
+    <h2>{{ spa[1] }}</h2>
+    <p>Kategoria: {{ spa[4] }}</p>
+    <p>Osoite: {{ spa.address }}</p>
+    <p>Kaupunki: {{ spa.city }}</p>
+    <p>Keskiarvo: {{ spa.avg_stars|round(2) if spa.avg_stars is not none else 0 }}</p>
+    <p>Arvosteluiden määrä: {{ spa.review_count }}</p>
+
+    <form action="/add_review" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ session['csrf_token'] }}">
+        Tähdet:
+        <select name="stars">
+            <option value="1">1
+            <option value="2">2
+            <option value="3">3
+            <option value="4">4
+            <option value="5">5
+        </select>
+        <p>
+        Kommentti:<br>
+        <textarea name="comment" rows="3" cols="40" minlength="1" maxlength="500"></textarea>
+        <p><input type="submit" value="Lähetä">
+        <input type="hidden" name="spa_id" value="{{ spa.id }}">
+
+        <button id="button-{{ spa.id }}" type="button" onclick="toggleComments('{{ spa.id }}')">Näytä kommentit</button>
+        <div id="comments-{{ spa.id }}" style="display: none">
+            {% for comment in spa.comments %}
+                <div class="comment">
+                    <p>{{ comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+
+    <hr>
+{% endfor %}
+
+</body>
+</html>

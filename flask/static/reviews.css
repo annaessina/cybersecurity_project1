@@ -1,0 +1,107 @@
+html, body {
+    height: 100%;
+  }
+ 
+  html {
+    display: table;
+    margin: auto;
+  }
+ 
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+  }
+ 
+ 
+  form {
+    margin: 20px 0;
+  }
+ 
+  input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ddd;
+  }
+ 
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+ 
+ 
+  .spa-card {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+ 
+  .spa-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+ 
+  .spa-card p {
+    margin: 5px 0;
+  }
+ 
+ 
+  .comment-form {
+    margin-top: 20px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+ 
+  .comment-form select,
+  .comment-form textarea,
+  .comment-form input[type="submit"] {
+    margin-top: 10px;
+  }
+ 
+  .comment-form textarea {
+    width: 100%;
+    resize: vertical;
+  }
+ 
+  .comment-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+ 
+ 
+  .comment {
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+ 
+  .comment p {
+    margin: 0;
+  }
+ 
+  .comment:first-child {
+    margin-top: 0;
+  }
+ 
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }  

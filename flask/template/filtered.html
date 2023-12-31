@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/spas.css">
+</head>
+<body>
+Kylpylöiden määrä: {{ count }}
+<br><br>
+{% for f in spas %}
+{{ f.name }}
+<br><br>
+{% endfor %}
+<p><a href="/logout">Kirjaudu ulos</a></p>
+<p><a href="/spas">Takaisin</a></p>
+
+</body>
+</html>

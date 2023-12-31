@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/new.css">
+</head>
+<body>
+    <form action="/send" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ session['csrf_token'] }}">
+        <p>Kylpylän nimi: <br>
+        <textarea name="name" rows="3" cols="40"></textarea></p>
+        <p>Kategoria:<br>
+        <select name="categories">
+            <option value="DaySpa">Day Spa
+            <option value="HotelSpa">Hotel or Resort Spa
+            <option value="MineralSpa">Mineral Springs Spa
+        </select></p>
+        <p>Kylpylän osoite: <br>
+        <input type="text" name="address" size="40" required></p>
+        <p>Kaupunki: <br>
+        <input type="text" name="city" size="40" required></p>
+        <br>
+        <input type="submit" value="Lisää">
+    </form>
+    {% if message %}
+    <div id="flash" class="alert alert-success">
+        {{ message }}
+    </div>  
+    {% endif %}
+    <script> setTimeout(function() {
+        document.getElementById('flash').style.display = 'none';
+      }, 3000);</script>
+    <p><a href="/spas">Takaisin</a></p>
+</body>
+</html>
